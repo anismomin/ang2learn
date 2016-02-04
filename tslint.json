@@ -1,5 +1,8 @@
 {
   "rules": {
+    
+  },
+  "disabled" : {
     "class-name": true,
     "curly": true,
     "eofline": false,

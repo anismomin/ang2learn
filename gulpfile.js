@@ -22,26 +22,31 @@ var sass        = require('gulp-sass');
 
 
 // SERVER
-gulp.task('delete_server', function(){
+/*gulp.task('delete_server', function(){
     return del(config.builtServer)
-});
+});*/
 
 gulp.task('build_server', function () {
     var tsProject = tsc.createProject(config.serverConf);    
     var tsResult = gulp.src(config.devServerTs)
         .pipe(sourcemaps.init())
         .pipe(tsc(tsProject))
+
     return tsResult.js
         .pipe(sourcemaps.write()) 
         .pipe(gulp.dest(config.builtServer))
 });
 
+gulp.task('copy_server_json', function () {
+    gulp.src(config.devServer + '*.json')
+        .pipe(gulp.dest('built/server'));
+});
 
 // we'd need a slight delay to reload browsers
 // connected to browser-sync after restarting nodemon
 var BROWSER_SYNC_RELOAD_DELAY = 500;
 
-gulp.task('nodemon', ['delete_server', 'build_server'], function (cb) {
+gulp.task('nodemon', [ 'build_server', 'copy_server_json'], function (cb) {
   var called = false;
   return nodemon({
 
@@ -181,7 +186,7 @@ gulp.task('delete_build', function(){
 });
 
 gulp.task('clean_build', function(callback){
-    runSequence('delete_build', 'build_server', 'build_sass','build_html','serve', callback);
+    runSequence('delete_build',  'build_server', 'build_sass','build_html','serve', callback);
 });
 
 /*

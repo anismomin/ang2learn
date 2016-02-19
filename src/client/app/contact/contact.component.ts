@@ -10,6 +10,7 @@ import {Router} from 'angular2/router';
             <p><label>First Name : </label><input type="text" [(ngModel)]="contact.firstname" > </p>
             <p><label>Last Name : </label><input type="text" [(ngModel)]="contact.lastname" > </p>
             <p><label>Email Name : </label><input type="text" [(ngModel)]="contact.email" > </p>
+            <p><label>Password : </label><input type="password" [(ngModel)]="contact.password" > </p>
             <p><button type="button" (click)="createNew()" class="btn btn-default">Create New contact from this Conact</button></p>
         </div>
     `,

@@ -4,7 +4,7 @@ import {ContactList} from './contact/contact-list.component'
 import {NewContact} from './contact/new-contact.component'
 import {HttpComponent} from './contact/http.component'
 import {ROUTER_DIRECTIVES} from 'angular2/router'
-import {RouteConfig, } from 'angular2/router'
+import {RouteConfig} from 'angular2/router'
 
 @Component({
     selector: 'app',

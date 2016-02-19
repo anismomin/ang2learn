@@ -4,23 +4,28 @@ import {Contact} from './contact';
 import {Router, RouteParams} from 'angular2/router';
 import {FormBuilder, Validators, ControlGroup} from 'angular2/common';
 
+import {ControlMessages} from '../control-messages.component';
+import {ValidationService} from '../services/validation.service';
+
+
 @Component({
 	template:`
 		<form [ngFormModel]="myForm" (ngSubmit)="onSubmit(myForm.value)">
             <p><label>First Name : </label>
-            <input type="text" 
-            	
-	            [ngFormControl]="myForm.controls['firstname']" > 
+            <input type="text" ngControl="firstname" > 
+            <control-messages control="firstname"></control-messages>
             </p>
             <p><label>Last Name : </label>
-            <input type="text" 
-            	
-	            [ngFormControl]="myForm.controls['lastname']"> 
+            <input type="text" ngControl="lastname" > 
+            <control-messages control="lastname"></control-messages>
             </p>
             <p><label>Email Name : </label>
-            <input type="text" 
-            	
-	            [ngFormControl]="myForm.controls['email']"> 
+            <input type="text" ngControl="email"> 
+            <control-messages control="email"></control-messages>
+            </p>
+            <p><label>Password: </label>
+            <input type="password" ngControl="password"> 
+            <control-messages control="password"></control-messages>
             </p>
             <p><button [disabled]="!myForm.valid">Create New Contact</button></p>
         </form>
@@ -28,27 +33,38 @@ import {FormBuilder, Validators, ControlGroup} from 'angular2/common';
 	styles: [`
 		.error {border: 1px solid red;}
 	`],
-	providers: [ContactService]
+	providers: [ContactService],
+	directives: [ControlMessages]
 })
 
 export class NewContact {
 
 	myForm: ControlGroup;
 	
-	constructor(private _ContactService: ContactService, private _router: Router, private _routeParams: RouteParams, private _formBuilder : FormBuilder) {}
+	constructor(private _ContactService: ContactService, private _router: Router, private _routeParams: RouteParams, private _formBuilder : FormBuilder) {
+		this.myForm = this._formBuilder.group({
+			'firstname': ['', Validators.compose([Validators.required, ValidationService.startsWithNumber]), ValidationService.usernameTaken],
+			'lastname': [this._routeParams.get('lastname'), Validators.required],
+			'email': ['', Validators.compose([Validators.required, ValidationService.emailValidator])],
+			'password': ['', Validators.compose([Validators.required, ValidationService.passwordValidator])]
+		});
+		
+	}
 
 	onSubmit(value){
 		this._ContactService.createNewContact(value);
 		this._router.navigate(['Contacts']);
 	}
 	
-	ngOnInit(): any {
+
+	/*ngOnInit(): any {
 		this.myForm = this._formBuilder.group({
-			'firstname' : ['', Validators.required],
+			'firstname': ['', Validators.compose([Validators.required, ValidationService.startsWithNumber]), ValidationService.usernameTaken],
 			'lastname': [this._routeParams.get('lastname'), Validators.required],
-			'email': ['', Validators.required]
+			'email': ['', Validators.compose([Validators.required, ValidationService.emailValidator])],
+			'password': ['', Validators.compose([Validators.required, ValidationService.passwordValidator])]
 		});
-	}
+	}*/
 }
 
 //////////////////////////////////////////////////////

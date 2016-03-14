@@ -1,6 +1,6 @@
 
 //Grab everything with import 'rxjs/Rx';
-import {Observable, Promise} from 'rxjs/Observable';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/delay';

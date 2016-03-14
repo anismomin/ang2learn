@@ -2,7 +2,8 @@
   "name": "angular2-boilerplate",
   "version": "1.0.0",
   "scripts": {
-    "start": "gulp"
+    "start": "gulp",
+    "typings": "typings"
   },
   "repository": {
     "type": "git",
@@ -26,22 +27,23 @@
     "run-sequence": "^1.1.5"
   },
   "dependencies": {
-    "angular2": "2.0.0-beta.7",
-    "systemjs": "0.19.22",
-    "es6-promise": "^3.0.2",
-    "es6-shim": "^0.33.3",
-    "reflect-metadata": "0.1.2",
-    "rxjs": "5.0.0-beta.2",
-    "zone.js": "0.5.15",
-    "express": "^4.13.4",
+    "angular2": "2.0.0-beta.9",
     "body-parser": "^1.6.5",
     "compression": "^1.0.11",
     "cors": "^2.4.1",
     "dotenv": "^0.4.0",
     "errorhandler": "^1.1.1",
+    "es6-promise": "^3.0.2",
+    "es6-shim": "^0.33.3",
+    "express": "^4.13.4",
     "express-jwt": "^0.3.1",
     "jsonwebtoken": "^5.0.1",
     "lodash": "^2.4.1",
-    "morgan": "^1.2.3"
+    "morgan": "^1.2.3",
+    "reflect-metadata": "0.1.2",
+    "rxjs": "5.0.0-beta.2",
+    "systemjs": "0.19.22",
+    "underscore": "^1.8.3",
+    "zone.js": "0.5.15"
   }
 }

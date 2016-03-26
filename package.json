@@ -9,6 +9,9 @@
     "type": "git",
     "url": "https://github.com/anismomin/ang2learn.git"
   },
+  "engines": {
+    "node": "0.12.7"
+  },
   "author": "Anis Momin",
   "license": "ISC",
   "devDependencies": {

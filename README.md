@@ -22,7 +22,8 @@ npm start
 gulp
 ```
 
-
+## Deploy
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 # NodeJS JWT Authentication sample
 

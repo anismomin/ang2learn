@@ -2,7 +2,7 @@ import {Component} from 'angular2/core'
 import {HttpTestService} from './http-test.service'
 
 @Component({
-	selector: 'http-test',
+	// selector: 'http-test',
 	template: `
 		<button (click)="testGetReq()" class="btn btn-default">button</button>
 		<p>Get Respose: {{ getResponse }}</p>

@@ -2,6 +2,7 @@ import {Component} from 'angular2/core';
 import {Contact} from './contact/contact'
 import {ContactList} from './contact/contact-list.component'
 import {NewContact} from './contact/new-contact.component'
+import {YoutubeComponent} from './youtube/youtube.component'
 import {HttpComponent} from './contact/http.component'
 import {ROUTER_DIRECTIVES} from 'angular2/router'
 import {RouteConfig} from 'angular2/router'
@@ -13,19 +14,22 @@ import {RouteConfig} from 'angular2/router'
             <nav>
                 <a [routerLink]="['Contacts']">Contacts</a>
                 <a [routerLink]="['NewContact']">New Contact</a>
+                <a [routerLink]="['Httptest']">Http</a>
+                <a [routerLink]="['Youtube']">Youtube</a>
             </nav>
         </header>       
         <div>
             <router-outlet></router-outlet>
-        </div> 
-        <http-test></http-test>
+        </div>
     `,
     directives: [ContactList, HttpComponent, ROUTER_DIRECTIVES]
 })
 @RouteConfig([
-    {path: '/', name: 'Contacts', component: ContactList, useAsDefault: true},
+    {path: '/', name: 'Contacts', component: ContactList},
     {path: '/newcontact', name: 'NewContact', component: NewContact},
-    { path: '/newcontact/:lastname', name: 'NewContactWithExist', component: NewContact }  
+    { path: '/newcontact/:lastname', name: 'NewContactWithExist', component: NewContact } ,
+    { path: '/youtube', name: 'Youtube', component: YoutubeComponent },
+    { path: '/http', name: 'Httptest', component: HttpComponent, useAsDefault: true }  
     
 ])
 export class AppComponent {

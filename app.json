@@ -1,0 +1,11 @@
+{
+  "name": "Learn Angular 2",
+  "description": "The Learning Angular 2 with a Node.JS Express App",
+  "keywords": [
+    "nodejs",
+    "express"
+  ],
+  "website": "http://www.anismomin.com",
+  "repository": "https://github.com/anismomin/ang2learn.git",
+  "logo": "https://nodejs.org/images/logos/nodejs.png"
+}
